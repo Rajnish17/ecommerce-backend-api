@@ -1,7 +1,7 @@
 const User = require("../models/userModel");
 const bcrypt = require('bcrypt');
 
-
+//Create a new user
 const register = async (req, res) => {
   const { name, email, password } = req.body;
     try {
@@ -36,22 +36,30 @@ const register = async (req, res) => {
 
 //login
 const login = async (req, res) => {
-  try {
-    const user = new User({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password
-    });
+  const { email, password } = req.body;
+    try {
+        //find user by email
+        const user = await User.findOne({ email });
+        if (!user) {
+          return res.status(401).json({ error: "user not found" });
 
-    await user.save();
-    return res.status(201).json({
-      message: "User Created Successfully",
-      data: user
-    });
+        };
 
-  } catch (error) {
-    res.status(400).json({ error })
-  };
+        // Check the password
+        const passwordMatch = await bcrypt.compare(password, user.password);
+        if (!passwordMatch) {
+            return res.status(401).json({ error: 'Invalid  password' });
+        }
+
+        res.status(200).json({ 
+          message: 'Login successful',
+          user:user
+         });
+
+
+    } catch (err) {
+        console.log(err)
+    }
 
 }
 
