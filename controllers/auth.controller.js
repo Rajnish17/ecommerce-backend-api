@@ -63,6 +63,19 @@ const login = async (req, res) => {
 
 }
 
+//logout
+const logout = async(req,res)=>{
+  //clear the user's section
+  req.session.destroy();
+  res.redirect("/login")
+
+  req.status(200).json({
+    message:"successfully logout"
+  })
+}
+
+
+
 
 
 
@@ -70,5 +83,6 @@ const login = async (req, res) => {
 
 module.exports = {
   register,
-  login
+  login,
+  logout
 }
