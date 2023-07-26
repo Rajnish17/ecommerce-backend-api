@@ -11,6 +11,10 @@ const register = async (req, res) => {
         if(existingEmail){
             return res.status(401).json({error:"email already exist"})
         }
+        //check password length
+        if(password.length < 8){
+          return res.status(401).json({error:"password length should be greater than eight character"})
+        }
         // Hash the password
         const hashedPassword = await bcrypt.hash(password, 10);
         // Create a new user
