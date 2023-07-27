@@ -7,10 +7,10 @@ const verifyToken = (req, res, next) => {
     if (authHeader) {
         const token = authHeader.split(" ")[1];
         jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-            if (err) res.status(403).json("wrong Token");
-
+            if (err){
+                return res.status(403).json("wrong Token");
+            } 
             req.user = user;
-
             next();
         })
     } else {
