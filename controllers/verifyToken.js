@@ -17,9 +17,20 @@ const verifyToken = (req, res, next) => {
         return res.status(401).json("you are not authorised")
 
     }
+};
+
+const verifyTokenAndAdmin =(req,res,next)=>{
+    verifyToken(req,res,()=>{
+        if(req.user.isAdmin){
+             next();
+        }else{
+            res.status(403).json("you are not authorised")
+        }
+    })
 }
 
 
 module.exports ={
-    verifyToken
+    verifyToken,
+    verifyTokenAndAdmin
 }

@@ -1,14 +1,15 @@
 const express =require("express");
 const router =express.Router();
-const {verifyToken} =require("../controllers/verifyToken")
+const {verifyToken,verifyTokenAndAdmin} =require("../controllers/verifyToken")
 const {register,login} = require("../controllers/auth.controller");
-const {getdata} = require("../controllers/user");
+const {getdata,deletedata} = require("../controllers/user");
 
 
 
 router.post("/register",register);
 router.post("/login",login);
-router.get("/alluser",verifyToken,getdata);
+router.get("/alluser",verifyTokenAndAdmin,getdata);
+router.delete("/delete/:id",verifyToken,deletedata);
 
 
 
