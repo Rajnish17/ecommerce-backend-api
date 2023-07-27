@@ -1,6 +1,6 @@
 const router =require("express").Router();
 const { createProduct,getProduct} =require("../controllers/product.controller");
-const {verifyTokenAndAdmin} =require("../controllers/verifyToken")
+const {verifyTokenAndAdmin} =require("../middleware/verifyToken")
 
 
 

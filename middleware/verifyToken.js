@@ -24,7 +24,7 @@ const verifyTokenAndAdmin =(req,res,next)=>{
         if(req.user.isAdmin){
              next();
         }else{
-            res.status(403).json("you are not authorised")
+            res.status(403).json("you are not authorised as admin")
         }
     })
 }
