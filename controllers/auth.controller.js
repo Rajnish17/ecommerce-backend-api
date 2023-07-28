@@ -77,9 +77,26 @@ const login = async (req, res) => {
   }
 
 }
+//logoun features
+
+const logout = async(req,res)=>{
+  try{
+      //clear the user's section
+      // console.log(jwt)
+    await res.clearCookie("jwt");
+    res.status(200).json({
+      message:"successfully logout"
+    })
+
+  }catch(err){
+    res.status(401).json(err);
+  }
+ 
+}
 
 
 module.exports = {
   register,
-  login
+  login,
+  logout
 }
