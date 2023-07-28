@@ -11,7 +11,7 @@ const OrderSchema =new mongoose.Schema({
                 default:1,
             }
         }],
-        amonut:{
+        amount:{
             type:Number,
             required:true
         },

@@ -6,10 +6,10 @@ const { verifyTokenAndUser, verifyTokenAndAdmin } = require("../middleware/verif
 
 
 //create a order
-router.post("/createorder", verifyTokenAndUser, createOrder);
+router.post("/createorder", createOrder);
 
 //find order by id
-router.get("/getorder/:id", verifyTokenAndUser, getOrder);
+router.get("/getorder/:id", getOrder);
 
 //delete order by id
 router.delete("/delete/:id", verifyTokenAndAdmin, deleteOrder);
