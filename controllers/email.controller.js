@@ -1,11 +1,12 @@
+require("dotenv").config();
 const nodemailer = require('nodemailer');
 
 // Replace these values with your actual email configuration
 const emailConfig = {
   service: 'Gmail',
   auth: {
-    user: 'your_email@example.com',
-    pass: 'your_email_password'
+    user: process.env.EMAIL,
+    pass: process.env.PASSWORD
   }
 };
 
@@ -30,4 +31,4 @@ const sendEmail = async (req, res) => {
   }
 };
 
-module.exports =sendEmail
+module.exports ={sendEmail}
