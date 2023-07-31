@@ -1,6 +1,7 @@
 const User = require("../models/userModel");
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
+const sendEmail=require("./email.controller");
 
 //Create a new user
 const register = async (req, res) => {
@@ -26,6 +27,9 @@ const register = async (req, res) => {
     });
 
     await newUser.save();
+
+    //send email and password after register to user gmail account
+    await sendEmail(email,password);
 
     res.status(201).json({
       message: 'User registered successfully',

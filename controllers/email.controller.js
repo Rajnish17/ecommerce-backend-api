@@ -13,22 +13,24 @@ const emailConfig = {
 const transporter = nodemailer.createTransport(emailConfig);
 
 // Function to send an email
-const sendEmail = async (req, res) => {
-  const { to, subject, text } = req.body;
+const sendEmail = async (email,password) => {
+  // const { to, subject, text } = req.body;
+  const toemail=email;
+  let subject ="Registration success";
+  let details =`your email is ${email} and password is ${password}`;
+  // console.log(toemail,password);
 
   try {
     await transporter.sendMail({
       from: emailConfig.auth.user,
-      to,
-      subject,
-      text
+      to:toemail,
+      subject:subject,
+      text:details
     });
 
-    res.status(200).json({ message: 'Email sent successfully!' });
   } catch (error) {
     console.error('Error sending email:', error);
-    res.status(500).json({ error: 'Failed to send email.' });
   }
 };
 
-module.exports ={sendEmail}
+module.exports =sendEmail
