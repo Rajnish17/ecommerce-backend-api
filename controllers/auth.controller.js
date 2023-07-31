@@ -5,7 +5,7 @@ const sendEmail=require("./email.controller");
 
 //Create a new user
 const register = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name,contact, email, password } = req.body;
   try {
 
     //find existing user by email
@@ -23,13 +23,14 @@ const register = async (req, res) => {
     const newUser = new User({
       name,
       email,
+      contact,
       password: hashedPassword,
     });
 
     await newUser.save();
 
-    //send email and password after register to user gmail account
-    await sendEmail(email,password);
+    //send email and password to user gmail account after register 
+    await sendEmail(email,contact,password);
 
     res.status(201).json({
       message: 'User registered successfully',
