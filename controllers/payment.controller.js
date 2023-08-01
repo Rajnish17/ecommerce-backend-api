@@ -4,8 +4,8 @@ const Razorpay = require("razorpay");
 
 // Initialize the Razorpay instance with your API credentials
 const razorpay = new Razorpay({
-  key_id:process.env.key_id,
-  key_secret:process.env.key_secret,
+  key_id:process.env.KEY_ID,
+  key_secret:process.env.KEY_SECRET,
 });
 
 // Function to create a new payment order
