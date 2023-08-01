@@ -4,8 +4,6 @@ const{verifyTokenAndUser,verifyTokenAndAdmin} =require("../middleware/verifyToke
 
 
 
-
-
 router.post("/addtocart",verifyTokenAndUser,addToCart);
 
 //find cart item by cart id
