@@ -14,14 +14,9 @@ const transporter = nodemailer.createTransport(emailConfig);
 
 // Function to send an email
 const sendEmail = async (email,contact,password) => {
-  // const phoneNumbar=contact;
-  // const toemail=email;
   let subject ="Registration success";
   let details =`Thanks For registration your email is ${email} and password for login in our website is ${password} Your contact number ${contact}`;
   
-   
-   
-
   try {
     await transporter.sendMail({
       from: emailConfig.auth.user,

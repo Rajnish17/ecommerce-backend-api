@@ -4,7 +4,7 @@ const Contact = require("../models/contactModel");
 const contactUs =  async(req,res)=>{
     const {name,email,contact,query} = req.body;
     try{
-        const newUserQuery = Contact({
+        const newUserQuery = new Contact({
             name,
             email,
             contact,

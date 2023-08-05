@@ -1,6 +1,4 @@
 const router = require("express").Router();
-
-
 const { getQuires,deleteQuires,contactUs } = require("../controllers/contact.controller");
 const {verifyTokenAndUser,verifyTokenAndAdmin} =require("../middleware/verifyToken")
 
