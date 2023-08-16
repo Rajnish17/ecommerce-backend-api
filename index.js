@@ -13,6 +13,10 @@ mongoose.connect(process.env.MONGO_URL).then(() => {
   })
 
 
+  app.get("/",(req,res)=>{
+    res.send(`server is running`)
+  })
+
 
 app.listen(port,()=>{
     console.log(`server running at ${port}`)
