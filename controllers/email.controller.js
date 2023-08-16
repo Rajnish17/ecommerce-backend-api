@@ -30,4 +30,12 @@ const sendEmail = async (email,contact,password) => {
   }
 };
 
+
+
+
+
+
+
+
+
 module.exports =sendEmail

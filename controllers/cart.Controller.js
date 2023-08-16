@@ -18,9 +18,12 @@ const addToCart = async (req, res) => {
         res.status(401).json(err);
     }
 }
+
+//get cart item user
 const getCart = async(req,res)=>{
+    let userId =req.params.id;
     try{
-       const cartItem =await Cart.findById({_id:req.params.id})
+       const cartItem =await Cart.findOne({ userId });
     //    const cartItem =await Cart.find()
         res.status(200).json(cartItem)
     
@@ -29,7 +32,11 @@ const getCart = async(req,res)=>{
     }
     
     };
+
+
+    //delete cart item
 const deleteCart = async(req,res)=>{
+    // let userId =req.params.id;
     try{
         //delete on the basis of cart _id
        await Cart.findByIdAndDelete(req.params.id)
